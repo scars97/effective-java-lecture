@@ -8,20 +8,14 @@
 - 두 객체에 대한 equals가 같다면, hashCode의 값도 같아야 한다.
 - 두 객체에 대한 equals가 다르더라고, hashCode의 값은 같을 수 있지만 해시 테이블 성능을 고려해 다른 값을 리턴하는 것이 좋다.
 
-### 1-1. hashMap
-- map에 값을 넣을 때도 hashCode() 실행
-- 어느 버킷에 넣을 지 정함.
-- 꺼낼 때도 hashCode 값을 먼저 가져와서
-- 가져온 값의 hash에 해당하는 버킷 안의 object 가져옴.
-- 결국엔 equals가 같다면 같은 hash값이 나와야함
-
-### 1-2. 두 객체가 다르더라도, equals가 다르더라도 hashCode의 값이 같다면.
+- 
+### 1-1. 두 객체가 다르더라도, equals가 다르더라도 hashCode의 값이 같다면.
 - `해시충돌` 문제.
 - 두 객체가 같은 hashCode를 가진 버킷에 들어가는데 그 안에 연결리스트(해시맵 내부)가 만들어짐.
-- 맨처음과 맨끝에 넣을 때는 O(1)
+- 데이터 추가시 O(1)
 - 데이터를 조회할 때는 O(n) -> n은 충돌하는 엔트리의 개수
 - hashMap은 배열의 인덱스처럼 바로 꺼내는 것이 가능하지만
-- LinkedList는 모든 연결리스트의 값을 비교하여 값을 가져오기 때문에 
+- LinkedList는 시작노드부터 다음 노드로 이동하면서 데이터를 읽기 때문에 
 - 비용증가, 성능저하, 알고리즘 효율성 ↓
 
 ---
@@ -74,8 +68,8 @@
         return result;
     }
 ```
-- 핵심필드(equals에 사용되는 필드)를 생략해선 안 된다.
-- hashCode를 정의한 로직을 노출할 필요 없다. 
+- 핵심필드(equals에 사용되는 필드)를 생략해선 안 됨.
+- hashCode를 정의한 로직을 노출할 필요 없음.
   - 노출하지 않아야
   - 클라이언트가 정의된 해시코드 값에 의지하지 않게 되고
   - 추후에 계산 방식을 바꿀 수 있음.
@@ -87,6 +81,49 @@
 - 자바 8에서 해시 충돌시 성능 개선을 위해 내부적으로 동일한 버킷에
 - 일정 개수 이상의 엔트리가 추가되면, 연결 리스트 대신 이진 트리를 사용
 
+### 2. 스레드 안전 (Thread-safety) - 멀티 스레드 환경에서 안전한 코드
+- synchronized 
+  - 하나의 스레드만 실행하게 됨 (Rock)
+  - but, 자주 호출되는 메서드에 사용한다면 성능 저하.(동기 방식)
+- DoubleCheckedRocking
+  - synchronized 단점을 최소화
+- volatile
+  - 일반적으로 기본 타입 필드들은 cpu의 캐시에 저장
+  - 다른 스레드가 업데이트를 했지만 전에 캐싱된 데이터를 읽어오는 경우가 있어
+  - 유효하지 않은 데이터를 리턴할 수 있음
+  - 필드에 volatile를 사용하면 캐시가 아닌 메인메모리에 저장
+  - 가장 최근에 업데이트된 데이터를 참조할 수 있음
+  - synchronized를 사용할 때는 volatile까지 사용 고려
+```java
+    // volatile 사용으로 캐시가 아닌 메인메모리에 저장.
+    private volatile int hashCode;
+
+    @Override 
+    public int hashCode() {
+        // DoubleCheckedRocking
+        // 해시코드가 설정되어 있으면 설정된 해시코드 리턴  
+        if (this.hashCode != 0) {
+            return hashCode;
+        }
+    
+        // 스레드 실행속도가 빨라 2개 이상의 스레드가 들어왔을 때
+        // synchronized 선언하여 동기적을 실행 
+        synchronized (this) {
+          int result = hashCode;
+          if (result == 0) {
+            result = Short.hashCode(areaCode);
+            result = 31 * result + Short.hashCode(prefix);
+            result = 31 * result + Short.hashCode(lineNum);
+            this.hashCode = result;
+          }
+          return result;
+        }
+    }
+```
+- 스레드 안전한 것과 안전하지 않은 것은 무엇이 있을까.
+  - HashTable 과 HashMap
+    - HashTable은 거의 모든 메서드에 synchronized가 선언되어 스레드 안전하다
+    - HashMap은 스레드 안전하지 못하다.
 
 ---
 ## 핵심정리
