@@ -6,15 +6,15 @@ public class Item implements Cloneable{
 
     @Override
     public Item clone() {
-        Item item = new Item();
-        item.name = this.name;
-        return item;
-//        Item result = null;
-//        try {
-//            result = (Item) super.clone();
-//            return result;
-//        } catch (CloneNotSupportedException e) {
-//            throw new AssertionError();
-//        }
+//        Item item = new Item();
+//        item.name = this.name;
+//        return item;
+        Item result = null;
+        try {
+            result = (Item) super.clone();
+            return result;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

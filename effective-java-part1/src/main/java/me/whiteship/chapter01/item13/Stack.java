@@ -35,7 +35,8 @@ public class Stack implements Cloneable{
         try {
             Stack result = (Stack) super.clone();
             // TODO 1. 아래 코드 주석 시 stack, Object를 clone한 result 가 동일한 elements를 참조하게 됨
-            // TODO 2. 서로 다른 인스턴스를 갖고 있지만 복제한 객체는 배열의 형태만 갖췄을 뿐 그 안의 인스턴스는 같은 값을 참조 -> 얕은 복제
+            // TODO 2. 서로 다른 인스턴스를 갖고 있지만 복제한 객체는 배열의 형태만 갖췄을 뿐 배열 안의 인스턴스는 같은 값을 참조 -> 얕은 복제
+                //stack의 값을 변경하면 복제한 result의 값도 달라짐. -> 깊은 복제 필요
             result.elements = elements.clone();
             return result;
         } catch (CloneNotSupportedException e) {
@@ -59,7 +60,24 @@ public class Stack implements Cloneable{
         for (Object arg : values)
             stack.push(arg);
 
+        System.out.println("stack의 해시코드 값");
+        System.out.println(stack.elements[0].hashCode());
+        System.out.println(stack.elements[1].hashCode());
+
         Stack copy = stack.clone();
+
+        System.out.println("copy의 해시코드 값");
+        System.out.println(copy.elements[0].hashCode());
+        System.out.println(copy.elements[1].hashCode());
+
+        System.out.println("배열 자체 인스턴스 비교");
+        System.out.println(stack == copy);
+
+        System.out.println("배열 안의 인스턴스 비교");
+        System.out.println(stack.elements[0] == copy.elements[0]);
+        System.out.println(stack.elements[1] == copy.elements[1]);
+
+        System.out.println();
 
         System.out.println("pop from stack");
         while (!stack.isEmpty())
