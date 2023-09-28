@@ -15,9 +15,9 @@ public abstract class Pizza {
         //하위 클래스의 타입으로 빌더를 만들 때 타입캐스팅이 필요
         // but, 하위 클래스에서 재정의할 수 있는 추상화 메서드를 만들고
         // 그 메서드를 리턴해준다면 타입캐스팅 할 필요 없음
-        public Builder<T> addTopping(Topping topping) {
+        public T addTopping(Topping topping) {
             toppings.add(Objects.requireNonNull(topping));
-            return this;
+            return self();
         }
 
         abstract Pizza build();
