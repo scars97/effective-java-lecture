@@ -41,6 +41,7 @@ public class CompareToConvention {
 - 자연적인 순서를 제공할 클래스에 'implement Comparable<T>' 을 선언한다.
 - compareTo 메서드를 재정의한다.
 - compareTo 메서들 안에서 기본 타입은 박싱된 기본 타입의 compare을 사용해 비교한다.
+  - 관계연산자를 <, > 사용 --> 오류 유발 ↑
 ```java
 public class Point implements Comparable<Point> {
 
@@ -58,7 +59,8 @@ public class Point implements Comparable<Point> {
     }
 }
 ```
-- 핵심 필드가 여러 개라면 비교 순서가 중요한다. 순서를 결정하는데 있어서 가장 중요한 필드를 비교하고 그 값이 0이라면 다음 필드를 비교한다.
+- 핵심 필드가 여러 개라면 비교 순서가 중요. 
+- 순서를 결정하는데 있어서 가장 중요한 필드를 비교하고 그 값이 0이라면 다음 필드를 비교한다.
 ```java
 @Override
 public int compareTo(PhoneNumber pn) {
@@ -71,9 +73,44 @@ public int compareTo(PhoneNumber pn) {
     return result;
 }
 ```
-- 기존 클래스를 확장하고 필드를 추가하는 경우 compareTo 규약을 지킬 방법이 없다.
+- 기존 클래스를 확장(상속)하고 필드를 추가하는 경우 compareTo 규약을 지킬 방법이 없다.
   - Composition을 활용할 것.
+    - 상속에서의 상위 클래스의 인스턴스 변수를 하위 클래스가 가지는 것
+```java
+public class Parent { 
+    private int x, y;
+    
+    // ...
+}
+public class Child {
+    private Parent parent;
+    private int z;
+    
+    // ...
+}
+```
 
 ## Comparable 구현 방법 2
-- Comparable가 제공하는 static 메서드를 사용해서 Comparable 인스턴스 생성
-- 
+- Comparator가 제공하는 static 메서드를 사용해서 Comparable 인스턴스 생성
+  - static 인스턴스를 생성한 후 Comparator의 default 메서드를 체이닝으로 사용 가능
+```java
+private static final Comparator<PhoneNumber> COMPARATOR =
+        comparingInt((PhoneNumber pn) -> pn.areaCode)
+                .thenComparingInt(pn -> pn.getPrefix())
+                .thenComparingInt(pn -> pn.lineNum);
+@Override
+public int compareTo(PhoneNumber pn) {
+        return COMPARATOR.compare(this, pn);
+}
+```
+
+---
+
+# 핵심정리
+```
+순서를 고려해야 하는 값 클래스를 작성한다면 꼭 Comparable 인터페이스를 구현하여,
+그 인스턴스를 쉽게 정렬하고, 검색하고, 비교 기능을 제공하는 컬렉션과 어우러지도록 해야 한다.
+compareTo 메서드에서 필드의 값을 비교할 때 <와 > 연산자를 쓰지 말아야 한다.
+그 대신 박싱된 기본 타입 클래스가 제공하는 정적 compare 메서드나
+Comparator 인스턴스가 제공하는 비교자 생성 메서드를 사용하자.
+```
