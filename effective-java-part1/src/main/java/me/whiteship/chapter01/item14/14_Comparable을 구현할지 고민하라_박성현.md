@@ -2,7 +2,7 @@
 
 ---
 
-## Comparable 규약
+## (1) Comparable 규약
 - Object.equals에 더해서 순서까지 비교할 수 있으며, 제네릭을 지원한다.
 - 자기 자신이 compareTo에 전달된 객체보다 작으면 음수, 같으면 0, 크다면 양수를 리턴한다.
   - 비교할 수 없는 타입의 객체가 주어지면 ClassCastException을 던진다.
@@ -37,7 +37,7 @@ public class CompareToConvention {
 }
 ```
 
-## Comparable 구현 방법 1
+## (2) Comparable 구현 방법 1
 - 자연적인 순서를 제공할 클래스에 'implement Comparable<T>' 을 선언한다.
 - compareTo 메서드를 재정의한다.
 - compareTo 메서들 안에서 기본 타입은 박싱된 기본 타입의 compare을 사용해 비교한다.
@@ -90,7 +90,7 @@ public class Child {
 }
 ```
 
-## Comparable 구현 방법 2
+## (3) Comparable 구현 방법 2
 - Comparator가 제공하는 static 메서드를 사용해서 Comparable 인스턴스 생성
   - static 인스턴스를 생성한 후 Comparator의 default 메서드를 체이닝으로 사용 가능
 ```java
@@ -103,6 +103,51 @@ public int compareTo(PhoneNumber pn) {
         return COMPARATOR.compare(this, pn);
 }
 ```
+
+## (4) Comparable, Comparator?
+- Comparator와 Comparable은 자바에서 객체 정렬에 사용되는 인터페이스
+- 서로 다른 방식으로 객체를 정렬하고 비교하는 데 사용
+
+### Comparable 인터페이스
+- Comparable 인터페이스는 정렬 가능한 클래스(즉, 정렬을 지원하는 클래스)가 구현해야 하는 인터페이스
+- compareTo 메서드를 정의하여 객체를 다른 객체와 비교하고 정렬 기준을 제공
+- compareTo 메서드는 현재 객체가 다른 객체보다 작으면 음수 값을, 크면 양수 값을, 같으면 0을 반환
+- Comparable을 구현한 클래스는 자연 순서(기본 정렬 순서)에 따라 정렬
+```java
+public class MyClass implements Comparable<MyClass> {
+   private int value;
+
+   public MyClass(int value) {
+       this.value = value;
+   }
+
+   @Override
+   public int compareTo(MyClass other) {
+       // value 값을 기준으로 비교
+       return this.value - other.value;
+   }
+}
+```
+
+### Comparator 인터페이스
+
+- Comparator 인터페이스는 객체의 정렬 기준을 제공하는 `별도의 클래스`를 생성할 때 사용
+- compare 메서드를 정의하여 두 객체를 비교하고 정렬 기준을 제공
+- Comparator를 사용하면 기본 정렬 순서 외에도 다양한 정렬 방식을 지원
+
+```java
+public class MyComparator implements Comparator<MyClass> {
+   @Override
+   public int compare(MyClass obj1, MyClass obj2) {
+       // value 값을 기준으로 비교
+       return obj1.getValue() - obj2.getValue();
+   }
+}
+```
+
+`Comparable`은 클래스 자체에 정렬 방식을 포함시키는 반면, `Comparator`는 정렬 방식을 별도의 클래스로 분리하여 정의
+
+정렬을 수행하는 메서드들(예: `Collections.sort()` 또는 `Arrays.sort()`)은 `Comparable` 또는 `Comparator`를 사용하여 정렬 방식을 결정하고, 사용자는 이 인터페이스들을 구현하여 원하는 정렬 동작을 정의할 수 있음.
 
 ---
 
