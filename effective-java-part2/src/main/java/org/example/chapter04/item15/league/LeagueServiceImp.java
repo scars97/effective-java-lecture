@@ -1,6 +1,5 @@
 package org.example.chapter04.item15.league;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -12,17 +11,8 @@ class LeagueServiceImp implements LeagueService {
     // 선수 리스트
     @Override
     public List<Player> players() {
-        return insertPlayer();
-    }
-
-    // 득점 순위
-    @Override
-    public List<Player> scoreRank() {
         List<Player> players = insertPlayer();
-
-        // sort를 사용해 득점순으로 오름차순 정렬
         players.sort(seq);
-
         return players;
     }
 
