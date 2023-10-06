@@ -1,8 +1,12 @@
 package org.example.chapter04.item15.league;
 
-import java.util.List;
+import org.example.chapter04.item15.premier.PremierLeagueService;
 
-public interface LeagueService {
+public class LeagueService {
 
-    public List<Player> players();
+    PremierLeagueService leagueService;
+
+    public LeagueService(PremierLeagueService leagueService) {
+        this.leagueService = leagueService;
+    }
 }

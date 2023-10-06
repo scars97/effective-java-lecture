@@ -1,4 +1,4 @@
-package org.example.chapter04.item15.league;
+package org.example.chapter04.item15.premier;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -13,6 +13,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return "선수: " + this.name + ", 득점: " + this.score;
+        return "선수: " + this.name +
+               ", 득점: " + this.score;
     }
 }

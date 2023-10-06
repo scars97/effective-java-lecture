@@ -1,10 +1,10 @@
-package org.example.chapter04.item15.league;
+package org.example.chapter04.item15.premier;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-class LeagueServiceImp implements LeagueService {
+class PremierLeagueServiceImp implements PremierLeagueService {
 
     ScoreSeq seq = new ScoreSeq();
 
