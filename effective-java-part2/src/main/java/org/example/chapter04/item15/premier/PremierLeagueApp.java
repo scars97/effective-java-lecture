@@ -4,6 +4,17 @@ import java.util.List;
 
 public class PremierLeagueApp {
 
+    // 의존성 주입
+    /*private PremierLeagueService epl;
+
+    public PremierLeagueApp() {
+        this.epl = new PremierLeagueServiceImp();
+    }
+
+    public PremierLeagueService getEpl() {
+        return epl;
+    }*/
+
     public static void main(String[] args) {
         PremierLeagueService leagueService = new PremierLeagueServiceImp();
 
