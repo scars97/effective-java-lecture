@@ -2,7 +2,33 @@
 
 ---
 
-### (1) 정적 메서드와 정적 필드만을 담은 클래스는 어떤 것이 있을까
+### (1) 정적 메서드와 정적 필드만을 담은 클래스(이하 A)는 어떻게 사용될까
+- 유틸리티 클래스 
+  - 일련의 관련 없는 기능을 모아놓는 데 유용하다.
+  - 수학 연산, 문자열 조작, 날짜 및 시간, 파일 조작, 네트워크 통신 등 특정 작업을 수행하는 메서드들을 묶을 수 있다.
+```java
+public class MathUtil {
+    public static int add(int a, int b) {
+        return a + b;
+    }
+
+    public static double calculateCircleArea(double radius) {
+        return Math.PI * radius * radius;
+    }
+}
+```
+- 상수 클래스
+  - 애플리케이션 전체에서 공통으로 사용되는 상수 값을 중앙에 정의하여 유지보수를 쉽게 만들어준다.
+```java
+public class Constants {
+    public static final int MAX_VALUE = 100;
+    public static final String APP_NAME = "MyApp";
+}
+```
+
+---
+
+### (2) A 클래스는 어떤 것이 있을까
 - 기본 타입 값이나 배열 관련 메서드들을 모아놓은 `Math, Arrays` 
 - 특정 인터페이스를 구현하는 객체를 생성해주는 정적 메서드들을 모아놓은 `Collections`
 - final 클래스와 관련한 메서드들도 모아놓을 수 있다.
@@ -61,7 +87,7 @@ public class Collections {
 
 ---
 
-### (2) 인스턴스화를 막는 방법
+### (3) 인스턴스화를 막는 방법
 - 정적 메서드만 담은 유틸리티 클래스는 인스턴스로 만들어 쓰려고 설계한 클래스가 아니다.
   - DateUtil, ServletRequestUtils ...
 - 추상 클래스로 만드는 것으로는 인스턴스화를 막을 수 없다.
