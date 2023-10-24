@@ -5,18 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="712b2350-e128-4d3e-9ae7-d8b08c211cf0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../effective-java-part1/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../effective-java-part1/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/chapter04/item15/league/LeagueServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/chapter04/item20/20_추상 클래스보다 인터페이스를 우선하라_박성현.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/chapter04/item20/20_추상 클래스보다 인터페이스를 우선하라_박성현.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/chapter04/item20/skeletal/AbstractCat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/chapter04/item20/skeletal/AbstractMammalia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/chapter04/item20/skeletal/AbstractFlyable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/chapter04/item20/skeletal/Flyable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/chapter04/item20/skeletal/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/chapter04/item20/skeletal/MyCat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/chapter04/item20/skeletal/Cat.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -24,10 +32,13 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2WWjJPBgUtC8ZN2ZiikZzGTSVor" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -38,12 +49,51 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/qkr97/OneDrive/바탕 화면/effective-java/강의/effective-java-part2",
+    "last_opened_file_path": "C:/Users/sj/Desktop/etc/effective-java-lecture/effective-java-part2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="javadoc -h" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.MyCat">
+    <configuration name="Cat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.chapter04.item20.skeletal.Cat" />
+      <module name="effective-java-part2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.chapter04.item20.skeletal.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InstrumentedHashSet" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.chapter04.item18.InstrumentedHashSet" />
+      <module name="effective-java-part2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.chapter04.item18.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PremierLeagueApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.chapter04.item15.premier.PremierLeagueApp" />
       <module name="effective-java-part2" />
@@ -57,8 +107,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SimpleTimeClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.chapter04.item20.defaultmethod.SimpleTimeClient" />
+      <module name="effective-java-part2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.chapter04.item20.defaultmethod.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MyCat" />
+        <item itemvalue="Application.SimpleTimeClient" />
+        <item itemvalue="Application.InstrumentedHashSet" />
         <item itemvalue="Application.PremierLeagueApp" />
       </list>
     </recent_temporary>
@@ -72,6 +138,19 @@
       <option name="presentableId" value="Default" />
       <updated>1696855158374</updated>
       <workItem from="1696855159393" duration="264000" />
+      <workItem from="1696894272090" duration="3161000" />
+      <workItem from="1696897655746" duration="2348000" />
+      <workItem from="1696980894081" duration="3412000" />
+      <workItem from="1697010840241" duration="600000" />
+      <workItem from="1697067320552" duration="3947000" />
+      <workItem from="1697155027151" duration="1886000" />
+      <workItem from="1697259525321" duration="5753000" />
+      <workItem from="1697415057551" duration="33000" />
+      <workItem from="1697498216971" duration="3441000" />
+      <workItem from="1697501692995" duration="17000" />
+      <workItem from="1697585164422" duration="24000" />
+      <workItem from="1698018900937" duration="2044000" />
+      <workItem from="1698103818443" duration="3485000" />
     </task>
     <servers />
   </component>
