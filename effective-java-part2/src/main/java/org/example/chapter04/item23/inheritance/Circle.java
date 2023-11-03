@@ -1,4 +1,4 @@
-package org.example.chapter04.item23;
+package org.example.chapter04.item23.inheritance;
 
 class Circle extends Figure {
     final double radius;

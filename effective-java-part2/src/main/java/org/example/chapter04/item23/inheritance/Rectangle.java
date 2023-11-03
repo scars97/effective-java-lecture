@@ -1,4 +1,4 @@
-package org.example.chapter04.item23;
+package org.example.chapter04.item23.inheritance;
 
 class Rectangle extends Figure {
     final double length;
