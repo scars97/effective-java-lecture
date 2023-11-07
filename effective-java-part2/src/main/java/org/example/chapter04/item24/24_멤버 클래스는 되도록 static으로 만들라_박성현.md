@@ -108,7 +108,7 @@ public class IntArrays {
 ## (2) 어댑터
 기존 코드를 클라이언트가 사용하는 인터페이스의 구현체로 바꿔주는 패턴
 
-![AdapterImg.png](AdapterImg.png)
+<img src="https://velog.velcdn.com/images/weekbelt/post/995ad03c-7b5f-4ea6-9a12-3149012df661/image.png">
 
 - 클라이언트가 사용하는 인터페이스를 따르지 않는 기존 코드를 재사용할 수 있게 해준다.
 - 어떤 클래스의 인스턴스를 감싸 마치 다른 클래스의 인스턴스처럼 보이게 하는 뷰로 사용.
