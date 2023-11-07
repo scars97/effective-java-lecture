@@ -102,3 +102,54 @@ public class IntArrays {
 - 가장 드물게 사용
 - 지역변수를 선언할 수 있는 곳이라면 어디서든 선언 가능
 - 멤버 클래스처럼 이름이 있고 반복해서 사용할 수 있다.
+
+---
+
+## (2) 어댑터
+기존 코드를 클라이언트가 사용하는 인터페이스의 구현체로 바꿔주는 패턴
+
+![AdapterImg.png](AdapterImg.png)
+
+- 클라이언트가 사용하는 인터페이스를 따르지 않는 기존 코드를 재사용할 수 있게 해준다.
+- 어떤 클래스의 인스턴스를 감싸 마치 다른 클래스의 인스턴스처럼 보이게 하는 뷰로 사용.
+```java
+class MySet<E> extends AbstractSet<E> {
+
+    @Override
+    public Iterator<E> iterator() {
+        return new MyIterator();
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    // 새로 만든 어댑터
+    private class MyIterator implements Iterator<E> {
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public E next() {
+            return null;
+        }
+    }
+}
+```
+
+---
+
+## 핵심 정리
+```
+메서드 밖에서도 사용해야 하거나 메서드 안에 정의하기엔 너무 길다면 멤버 클래스로 만든다.
+
+멤버 클래스의 인스턴스 각각이 바깥 인스턴스를 참조한다면 비정적으로, 그렇지 않으면 정적으로 만들자.
+
+중첩 클래스가 한 메서드 안에서만 쓰이면서 그 인스턴스를 생성하는 지점이 단 한 곳이고
+해당 타입으로 쓰기에 적합한 클래스나 인터페이스가 있다면 익명 클래스로 만들고,
+그렇지 않으면 지역 클래스로 만들자.
+```
