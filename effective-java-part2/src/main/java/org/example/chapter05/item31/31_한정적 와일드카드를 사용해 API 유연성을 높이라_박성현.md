@@ -3,12 +3,8 @@
 ---
 
 ## PECS - Producer-Extends, Consumer-Super
-- producer는 입력 매개변수로부터 E 컬렉션에 원소를 옮겨 담는다
-- consumber는 E 컬렉션 인스턴스의 원소를 입력 매개변수로 옮겨 담는다
-<blockquote>
-유연성을 극대화하려면 원소의 생산자나 소비자용 입력 매개변수에 와일드카드 타입을 사용하라.
-</blockquote>
-
+- 와일드카드(?)를 사용할 때 생길 수 있는 혼란을 줄이기 위한 규칙
+- 제네릭 컬렉션을 다룰 때 해당 컬렉션의 원소를 읽기, 쓰기를 구분해서 사용
 
 ### (1) Producer-Extends
 - 데이터가 생산, 저장될 때에 extends 사용
@@ -64,3 +60,7 @@ public static void main(String[]args){
     numberStack.popAll(objects);
 }
 ```
+
+<blockquote>
+유연성을 극대화하려면 원소의 생산자나 소비자용 입력 매개변수에 와일드카드 타입을 사용하라.
+</blockquote>
