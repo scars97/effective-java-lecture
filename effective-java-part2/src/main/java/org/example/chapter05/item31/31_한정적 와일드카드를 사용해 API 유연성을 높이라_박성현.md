@@ -3,11 +3,12 @@
 ---
 
 ## PECS - Producer-Extends, Consumer-Super
+- Get and Put Principle
 - 와일드카드(?)를 사용할 때 생길 수 있는 혼란을 줄이기 위한 규칙
-- 제네릭 컬렉션을 다룰 때 해당 컬렉션의 원소를 읽기, 쓰기를 구분해서 사용
+- 생산자(producer)라면 extends, 소비자(consumer)라면 super
 
 ### (1) Producer-Extends
-- 데이터가 생산, 저장될 때에 extends 사용
+- 데이터를 생산, 저장될 때에 extends 사용
   - `<? extends E>`
 
 ```java
@@ -29,6 +30,7 @@ public void pushAll(Iterable<? extends E> src) {
 
 public static void main(String[] args) {
     Stack<Number> numberStack = new Stack<>();
+    // 데이터를 저장하는 생산자 객체
     Iterable<Integer> integers = Arrays.asList(3, 1, 4, 1, 5, 9);
     numberStack.pushAll(integers);
     // ...
@@ -56,11 +58,14 @@ public void popAll(Collection<? super E> dst) {
 
 public static void main(String[]args){
     // ...
+        
+    // 데이터를 조회하는, 꺼내오는 소비자 객체
     Collection<Object> objects = new ArrayList<>();
     numberStack.popAll(objects);
 }
 ```
 
 <blockquote>
-유연성을 극대화하려면 원소의 생산자나 소비자용 입력 매개변수에 와일드카드 타입을 사용하라.
+유연성을 극대화하려면 원소의 생산자나 소비자용 입력 매개변수에 와일드카드 타입을 사용하라. <br>
+한편, 입력 매개변수가 생산자와 소비자 역할을 동시에 한다면 와일드카드 타입을 사용하지 말아야 한다.
 </blockquote>
