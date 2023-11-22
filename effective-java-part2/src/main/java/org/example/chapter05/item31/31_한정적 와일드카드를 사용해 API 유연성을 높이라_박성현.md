@@ -69,3 +69,22 @@ public static void main(String[]args){
 유연성을 극대화하려면 원소의 생산자나 소비자용 입력 매개변수에 와일드카드 타입을 사용하라. <br>
 한편, 입력 매개변수가 생산자와 소비자 역할을 동시에 한다면 와일드카드 타입을 사용하지 말아야 한다.
 </blockquote>
+
+---
+
+## 와일드 카드
+
+비한정적 와일드 카드, 불특정 타입
+- `<?>`로 선언한 매개변수를 사용하여 데이터를 조회할 수는 있지만 데이터를 저장하지는 못한다.
+- `<?>`은 null 외에는 어떤 값도 넣을 수 없기 때문
+- 와일드카드 타입의 실제 타입을 알려주는 메서드를 private 도우미 메서드로 작성하여 활용하는 방법으로 해결 가능.
+```java
+public static void swap(List<?> list, int i, int j) {
+    swapHelper(list, i, j);
+}
+
+// 와일드카드 타입을 실제 타입으로 바꿔주는 private 도우미 메서드
+public static <E> void swap(List<E> list, int i, int j) {
+    list.set(i, list.set(j, list.get(i)));
+}
+```
